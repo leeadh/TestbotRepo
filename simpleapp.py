@@ -19,4 +19,4 @@ if __name__ == '__main__':
     if args.port == None:
         print "Missing required argument: -p/--port"
         sys.exit(1)
-    app.run(host='0.0.0.0', port=int(args.port), debug=False)
+    app.run(host='129.146.81.38', port=int(args.port), debug=False)
