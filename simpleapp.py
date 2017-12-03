@@ -3,6 +3,8 @@ import requests
 
 app = Flask(__name__)
 
+VERIFY_TOKEN = ""
+
 ACCESS_TOKEN = "EAAFDS8txrPIBAK2ZCiphUeg6YxGKgZCxsXmr1XGuhkLVu01xiDleLZBALC74Qpr6ZAZCMWOm1s1wl2wWKAMEmJlfdJHKiXMQZCU4GOlT29Me6SFfrr6YANlbcL2BIV1Wl27QbZBl8iWvTi4tBxyxsk5uuzI21cfYQ5MdAdFFrMGLAZDZD"
 
 
@@ -13,6 +15,14 @@ def reply(user_id, msg):
     }
     resp = requests.post("https://graph.facebook.com/v2.6/me/messages?access_token=" + ACCESS_TOKEN, json=data)
     print(resp.content)
+
+
+@app.route('/', methods=['GET'])
+def handle_verification():
+    if request.args['hub.verify_token'] == VERIFY_TOKEN:
+        return request.args['hub.challenge']
+    else:
+        return "Invalid verification token"
 
 
 @app.route('/', methods=['POST'])
