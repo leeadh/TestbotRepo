@@ -1,7 +1,7 @@
 from flask import Flask, request
 import requests
 
-app = Flask(__)
+app = Flask(_)
 
 ACCESS_TOKEN = "EAAFDS8txrPIBAK2ZCiphUeg6YxGKgZCxsXmr1XGuhkLVu01xiDleLZBALC74Qpr6ZAZCMWOm1s1wl2wWKAMEmJlfdJHKiXMQZCU4GOlT29Me6SFfrr6YANlbcL2BIV1Wl27QbZBl8iWvTi4tBxyxsk5uuzI21cfYQ5MdAdFFrMGLAZDZD"
 
