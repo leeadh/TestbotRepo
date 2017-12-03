@@ -1,11 +1,7 @@
-from flask import Flask, request
-import requests
+app = Flask(__name__)
 
-app = Flask(_)
+ACCESS_TOKEN = "EAAP9MMaGh1cBAHS7jZCnuQgm2GWx5grLraIElFlWlIw2r3Afb34m2c2rP0xdkkkKEeiBOykGINAP0tScwmL5NNBJQN9ayPCuq13syvWocmbYZA7BXL86FsZCyZBxTmkgYYp8MDulLc1Tx70FGdU5ebQZAJV28nMkZD"
 
-ACCESS_TOKEN = "EAAFDS8txrPIBAK2ZCiphUeg6YxGKgZCxsXmr1XGuhkLVu01xiDleLZBALC74Qpr6ZAZCMWOm1s1wl2wWKAMEmJlfdJHKiXMQZCU4GOlT29Me6SFfrr6YANlbcL2BIV1Wl27QbZBl8iWvTi4tBxyxsk5uuzI21cfYQ5MdAdFFrMGLAZDZD"
-
-VERIFY_TOKEN = ""
 
 def reply(user_id, msg):
     data = {
@@ -16,19 +12,9 @@ def reply(user_id, msg):
     print(resp.content)
 
 
-
-@app.route('/', methods=['GET'])
-def handle_verification():
-    if request.args['hub.verify_token'] == VERIFY_TOKEN:
-        return request.args['hub.challenge']
-    else:
-        return "Invalid verification token"
-
-
 @app.route('/', methods=['POST'])
 def handle_incoming_messages():
     data = request.json
-    print(data)
     sender = data['entry'][0]['messaging'][0]['sender']['id']
     message = data['entry'][0]['messaging'][0]['message']['text']
     reply(sender, message[::-1])
@@ -37,4 +23,4 @@ def handle_incoming_messages():
 
 
 if __name__ == '__main__':
-    app.run(host= '0.0.0.0', debug=True)                       
+    app.run(debug=True)
